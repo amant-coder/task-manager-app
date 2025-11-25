@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import { useAuth } from "@/context/AuthContext";
 import toast from "react-hot-toast";
+import Button from "@/components/ui/Button";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -35,7 +36,7 @@ export default function LoginPage() {
       <main className="min-h-[calc(100vh-56px)] flex items-center justify-center px-4">
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-md bg-slate-950 border border-slate-800 rounded-xl p-6 space-y-4"
+          className="w-full max-w-md bg-slate-950 border border-slate-800 rounded-xl p-6 space-y-4 text-slate-200"
         >
           <h2 className="text-2xl font-semibold">Login</h2>
 
@@ -51,7 +52,7 @@ export default function LoginPage() {
               type="email"
               name="email"
               required
-              className="w-full rounded-md bg-slate-900 border border-slate-700 px-3 py-2 text-sm outline-none focus:border-blue-500"
+              className="w-full rounded-md bg-slate-900 border border-slate-700 px-3 py-2 text-sm outline-none focus:border-blue-500 text-white"
               onChange={handleChange}
               value={form.email}
             />
@@ -64,18 +65,19 @@ export default function LoginPage() {
               name="password"
               required
               minLength={6}
-              className="w-full rounded-md bg-slate-900 border border-slate-700 px-3 py-2 text-sm outline-none focus:border-blue-500"
+              className="w-full rounded-md bg-slate-900 border border-slate-700 px-3 py-2 text-sm outline-none focus:border-blue-500 text-white"
               onChange={handleChange}
               value={form.password}
             />
           </div>
 
-          <button
+          <Button
+            type="submit"
             disabled={loading}
-            className="w-full mt-2 rounded-md bg-blue-500 hover:bg-blue-600 disabled:opacity-60 py-2 text-sm font-medium"
+            className="w-full mt-2"
           >
             {loading ? "Logging in..." : "Login"}
-          </button>
+          </Button>
         </form>
       </main>
     </>

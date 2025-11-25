@@ -1,8 +1,11 @@
 import Navbar from "@/components/Navbar";
+import ClickSpark from "@/components/ClickSpark";
+import SplashCursor from "@/components/SplashCursor";
 
 export default function HomePage() {
   return (
-    <>
+    <ClickSpark sparkColor="#fff" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
+      <SplashCursor />
       <Navbar />
       <main className="min-h-[calc(100vh-56px)] flex items-center justify-center px-4">
         <div className="max-w-lg text-center space-y-4">
@@ -14,6 +17,6 @@ export default function HomePage() {
           </p>
         </div>
       </main>
-    </>
+    </ClickSpark>
   );
 }

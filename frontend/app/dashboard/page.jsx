@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { createTask, getTasks, deleteTask, updateTask, uploadFile } from "@/lib/api";
 import toast from "react-hot-toast";
+import Button from "@/components/ui/Button";
+import Card from "@/components/ui/Card";
 
 export default function DashboardPage() {
   const { user, loading, logout } = useAuth();
@@ -125,12 +127,13 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-slate-950 text-slate-50">
       <div className="bg-emerald-600 p-4 shadow-md flex justify-between items-center">
         <strong className="text-xl">Dashboard</strong>
-        <button
+        <Button
           onClick={logout}
-          className="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-2 px-4 rounded shadow-md hover:shadow-red-500/20 transition-all duration-200"
+          variant="danger"
+          className="text-sm py-2 px-4 shadow-md"
         >
           Logout
-        </button>
+        </Button>
       </div>
 
       <div className="max-w-4xl mx-auto p-6">
@@ -153,13 +156,13 @@ export default function DashboardPage() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Task Title"
-            className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-500 transition-colors"
+            className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-500 transition-colors text-white"
           />
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Task Description"
-            className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-500 transition-colors min-h-[100px]"
+            className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-500 transition-colors min-h-[100px] text-white"
           />
 
           <div className="flex items-center gap-4">
@@ -174,25 +177,22 @@ export default function DashboardPage() {
             </label>
           </div>
 
-          <button
+          <Button
             disabled={saving}
             type="submit"
-            className={`font-bold py-2 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:hover:scale-100 ${editingTask
-                ? "bg-blue-500 hover:bg-blue-600 hover:shadow-blue-500/20 text-white"
-                : "bg-emerald-500 hover:bg-emerald-600 hover:shadow-emerald-500/20 text-white"
-              }`}
+            variant={editingTask ? "primary" : "success"}
           >
             {saving ? "Saving..." : (editingTask ? "Update Task" : "Add Task")}
-          </button>
+          </Button>
         </form>
 
         <div className="space-y-4">
           <h3 className="text-xl font-semibold mb-4">Your Tasks</h3>
           {tasks && tasks.length ? (
             tasks.map((task, idx) => (
-              <div
+              <Card
                 key={task._id || task.id || idx}
-                className="bg-slate-900 p-4 rounded-lg border border-slate-800 flex justify-between items-start group hover:border-slate-700 transition-colors"
+                className="flex justify-between items-start group"
               >
                 <div>
                   <div className="font-semibold text-lg">{task?.title || "Untitled"}</div>
@@ -211,20 +211,22 @@ export default function DashboardPage() {
                   )}
                 </div>
                 <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button
+                  <Button
                     onClick={() => handleEdit(task)}
-                    className="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded shadow-md hover:shadow-blue-500/20 transform hover:scale-105 transition-all duration-200"
+                    variant="primary"
+                    className="text-sm py-1 px-3"
                   >
                     Edit
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={() => handleDelete(task._id || task.id)}
-                    className="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded shadow-md hover:shadow-red-500/20 transform hover:scale-105 transition-all duration-200"
+                    variant="danger"
+                    className="text-sm py-1 px-3"
                   >
                     Delete
-                  </button>
+                  </Button>
                 </div>
-              </div>
+              </Card>
             ))
           ) : (
             <p className="text-slate-400 text-center py-8">No tasks yet. Add one above!</p>
