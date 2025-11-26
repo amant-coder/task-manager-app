@@ -1,104 +1,170 @@
-Fullstack Task Manager – README.md
+Task Manager – Full-Stack MERN App
 
-A full-stack MERN + Next.js application that allows users to register, log in, create tasks, upload attachments, and manage their task list in a secure dashboard.
+A complete authentication-based Task Manager application built using:
 
-for better experince open the website in chrome(incognito Mode)
+Frontend: Next.js 13 (App Router), TailwindCSS
 
-🚀 Tech Stack
-Frontend
+Backend: Node.js, Express.js
 
-Next.js 14 / App Router
+Database: MongoDB (Mongoose)
 
-React Context API for auth state
+Auth: JWT-based authentication
 
-Tailwind CSS
+File Uploads: Cloudinary + Multer
 
-Fetch API for server communication
+Deployment: Frontend on Netlify & Backend on Render
 
-Backend
+🚀 Features
+🔐 Authentication
 
-Node.js + Express
+User registration
 
-MongoDB + Mongoose
+User login
 
-JWT Authentication
+Protected routes using JWT
 
-Multer + Cloudinary for file uploads
+Auto-login using stored tokens
 
-🔐 Features
-Auth
+📝 Task Management
 
-Register / Login
+Create new tasks
 
-JWT-based authentication
-
-Protected dashboard route
-
-Tasks
-
-Create tasks
-
-Read all tasks
+View all tasks
 
 Delete tasks
 
-Task validation
+Every task includes:
 
-Task search (title filter)
+Title
 
-File Uploads
+Description
 
-Upload attachments (image/pdf/etc.)
+Optional image/file upload
 
-Cloudinary integration
+☁️ Cloudinary File Uploads
 
-Attachment stored as a URL in MongoDB
+Upload task attachments
+
+Files stored securely in the cloud
+
+Url returned to the database
+
+🎨 UI / UX
+
+Responsive UI
+
+ClickSpark effects
+
+Custom animated cursor
+
+Toast notifications
+
+Project Structure
+fullstack-task-manager/
+│
+├── backend/                             # Express API
+│   ├── config/
+│   │   ├── db.js                        # MongoDB connection
+│   │   ├── cloudinary.js                # Cloudinary setup
+│   │
+│   ├── controllers/
+│   │   ├── auth.controller.js
+│   │   ├── profile.controller.js
+│   │   ├── task.controller.js
+│   │
+│   ├── middleware/
+│   │   ├── auth.js                      # JWT verification
+│   │   ├── errorHandler.js
+│   │
+│   ├── models/
+│   │   ├── User.js
+│   │   ├── Task.js
+│   │
+│   ├── routes/
+│   │   ├── auth.routes.js
+│   │   ├── profile.routes.js
+│   │   ├── tasks.routes.js
+│   │   ├── upload.routes.js
+│   │
+│   ├── .env.example                     # Example env (NO secrets)
+│   ├── server.js
+│   ├── package.json
+│   └── README.md
+│
+├── frontend/                            # Next.js 14 App
+│   ├── app/
+│   │   ├── layout.js
+│   │   ├── page.js
+│   │   ├── login/
+│   │   │   └── page.js
+│   │   ├── register/
+│   │   │   └── page.js
+│   │   └── dashboard/
+│   │       └── page.js
+│   │
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── ProtectedRoute.jsx
+│   │   ├── ClickSpark.jsx
+│   │   ├── SplashCursor.jsx
+│   │   └── ui/                           # Shadcn UI
+│   │
+│   ├── context/
+│   │   └── AuthContext.js
+│   │
+│   ├── public/
+│   │   ├── favicon.ico
+│   │
+│   ├── styles/
+│   │   └── globals.css
+│   │
+│   ├── .env.local.example
+│   ├── next.config.mjs
+│   ├── netlify.toml                      # Netlify deploy config
+│   ├── package.json
+│   
+│
+├── .gitignore
+├── LICENSE
+└── README.md                            # Main README
 
 
-Run App
-Start backend
-cd backend
-npm run dev
-
-Start frontend
-cd frontend
-npm run dev
 
 
-Backend → http://localhost:5000
 
-Frontend → http://localhost:3000
+Full-Stack Task Manager App
+Next.js 14 + Node.js/Express + MongoDB + JWT + Cloudinary
 
-📁 Project Structure
-Backend
-backend/
- ├── controllers/
- ├── models/
- ├── middleware/
- ├── routes/
- ├── config/
- ├── server.js
- └── .env
+A fully functional modern task manager application with authentication, file upload, protected dashboards, and a clean UI using ShadCN + Tailwind.
 
-Frontend
-frontend/
- ├── app/
- ├── components/
- ├── context/
- ├── lib/
- ├── public/
- └── package.json
+🌟 Features
+Frontend (Next.js 14)
 
- 🎯 Future Improvements
+✔️ App Router (app/)
+✔️ Login / Register pages
+✔️ Protected dashboard
+✔️ Task CRUD
+✔️ Cloudinary file upload
+✔️ Toast notifications
+✔️ Modern UI using Tailwind + ShadCN
+✔️ Cool animations (ClickSpark + SplashCursor)
 
-Task categories & labels
+Backend (Node.js / Express)
 
-User profile settings
+✔️ REST API
+✔️ MongoDB + Mongoose
+✔️ JWT Authentication
+✔️ Task CRUD endpoints
+✔️ Cloudinary attachment upload
+✔️ Error handling & validation
 
-Multi-file uploads
 
-Drag-and-drop task ordering
+| Layer      | Technology                          |
+| ---------- | ----------------------------------- |
+| Frontend   | Next.js 14, React, Tailwind, ShadCN |
+| Backend    | Express, Mongoose, Cloudinary       |
+| Auth       | JWT                                 |
+| Database   | MongoDB Atlas                       |                  |
 
-❤️ Author
 
-Built by Aman R. Thakur as a full-stack internship assignment.
+Made with ❤️ by Aman R. Thakur

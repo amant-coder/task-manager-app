@@ -1,22 +1,25 @@
-import Navbar from "@/components/Navbar";
-import ClickSpark from "@/components/ClickSpark";
-import SplashCursor from "@/components/SplashCursor";
+import Link from "next/link";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <ClickSpark sparkColor="#fff" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
-      <SplashCursor />
-      <Navbar />
-      <main className="min-h-[calc(100vh-56px)] flex items-center justify-center px-4">
-        <div className="max-w-lg text-center space-y-4">
-          <h1 className="text-3xl md:text-4xl font-bold">
-            Fullstack Demo Dashboard
-          </h1>
-          <p className="text-slate-300">
-            Register or login to manage your tasks and view your profile.
-          </p>
+    <div className="flex flex-col items-center justify-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <h1 className="text-4xl font-bold">Welcome to Task Manager</h1>
+        <div className="flex gap-4 items-center flex-col sm:flex-row">
+          <Link
+            href="/dashboard"
+            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+          >
+            Go to Dashboard
+          </Link>
+          <Link
+            href="/login"
+            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+          >
+            Login
+          </Link>
         </div>
       </main>
-    </ClickSpark>
+    </div>
   );
 }
