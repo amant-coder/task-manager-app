@@ -17,8 +17,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"], // your Next.js URL
-    credentials: true,               // allow cookies
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:3001",
+      process.env.FRONTEND_URL // Your Vercel Frontend URL
+    ].filter(Boolean),
+    credentials: true,
   })
 );
 
@@ -35,4 +39,9 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+export default app;
